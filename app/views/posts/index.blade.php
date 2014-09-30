@@ -24,6 +24,7 @@
             <td>{{ $post->created_at }}</td>
             <td>{{ $post->updated_at }}</td>
             <td>
+                <a href="{{ URL::to('posts/' . $post->id) }}"> Show </a> |
                 <a href="{{ URL::to('posts/' . $post->id . '/edit') }}"> Edit </a> |
                 <a href="{{ URL::to('posts/'. $post->id . '/delete') }}"> Delete </a>
             </td>

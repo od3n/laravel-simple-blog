@@ -54,16 +54,26 @@ class PostsController extends \BaseController {
     }
 
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id) {
+
+        $post = Post::find($id);
+
+        if ($post) {
+
+            // Show the page
+            return View::make('posts/show', compact('post'));
+
+        } else {
+            // Redirect to the posts index
+            return Redirect::to('posts');
+        }
+    }
 
 
     /**

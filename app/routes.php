@@ -16,6 +16,9 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+Route::get('comments/{id}/delete', 'CommentsController@delete');
+Route::resource('comments', 'CommentsController');
 
-Route::get('posts/{id}/delete', 		'PostsController@delete');
+Route::post('posts/{id}/comment', array('as' => 'posts.comment', 'uses' => 'PostsController@comment'));
+Route::get('posts/{id}/delete', 'PostsController@delete');
 Route::resource('posts', 'PostsController');

@@ -75,6 +75,29 @@ class PostsController extends \BaseController {
         }
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function comment($id) {
+
+        $input = Input::all();
+        $validation = Validator::make($input, Comment::$rules);
+
+        if ($validation->passes())
+        {
+            Comment::create($input);
+
+            return Redirect::route('posts.show', $id);
+        }
+
+        return Redirect::route('posts.show', $id)
+            ->withInput()
+            ->withErrors($validation)
+            ->with('message', 'There were validation errors.');
+    }
+
 
     /**
      * Show the form for editing the specified resource.

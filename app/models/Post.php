@@ -7,4 +7,8 @@ class Post extends Eloquent
     public static $rules = array(
         'title' => 'required'
     );
+
+    public function comments() {
+        return $this->hasMany('Comment');
+    }
 }
